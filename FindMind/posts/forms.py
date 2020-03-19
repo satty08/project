@@ -1,0 +1,11 @@
+from django import forms
+from posts import models
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        fields = ("message","title")
+        model = models.Post
+
+        def __init__(self, *args, **kwargs):
+            user = kwargs.pop('user', None)
+            super().__init__(*args, **kwargs)
